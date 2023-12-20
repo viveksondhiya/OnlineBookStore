@@ -21,7 +21,8 @@ public class Book {
     private String bookName;
     private String bookLanguage;
     private Long rating;
-    private String AuthorName;
+    private String authorName;
+    private String description;
 
     @ManyToMany(mappedBy = "userBooks")
     private List<User> bookUsers = new ArrayList<>();

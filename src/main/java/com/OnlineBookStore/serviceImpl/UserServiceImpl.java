@@ -20,11 +20,25 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private ModelMapper modelMapper;
 
+//    @Override
+//    public UserDto createUser(UserDto userDto) {
+//        User user=this.dtoToUser(userDto);
+//        User saveUser=this.userRepo.save(user);
+//        return this.userToDto(saveUser);
+//    }
+
     @Override
-    public UserDto createUser(UserDto userDto) {
-        User user=this.dtoToUser(userDto);
-        User saveUser=this.userRepo.save(user);
-        return this.userToDto(saveUser);
+    public String createUser(UserDto userDto) {
+        if (emailExists(userDto.getEmail())) {
+            return "User with this email already exists";
+        }
+
+        User user = dtoToUser(userDto);
+        User savedUser = userRepo.save(user);
+        return "User Created Successfully";
+    }
+    private boolean emailExists(String email) {
+        return userRepo.existsByEmail(email);
     }
 
     @Override

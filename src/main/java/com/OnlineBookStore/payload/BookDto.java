@@ -15,5 +15,6 @@ public class BookDto {
     private String bookName;
     private String bookLanguage;
     private Long rating;
-    private String AuthorName;
+    private String authorName;
+    private String description;
 }

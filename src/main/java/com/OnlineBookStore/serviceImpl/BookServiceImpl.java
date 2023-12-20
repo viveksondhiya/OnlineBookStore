@@ -49,17 +49,18 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDto updateBook(BookDto bookDto, Long id) {
-        Book book=this.bookRepo.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("Book","bookId",id));
+    public BookDto updateBook(BookDto bookDto, Long book_Id) {
+        Book book=this.bookRepo.findById(book_Id)
+                .orElseThrow(()->new ResourceNotFoundException("Book","bookId",book_Id));
         book.setBookName(bookDto.getBookName());
         book.setBookLanguage(bookDto.getBookLanguage());
         book.setAuthorName(bookDto.getAuthorName());
-        Book updatedPost=this.bookRepo.save(book);
-        return this.modelMapper.map(updatedPost,BookDto.class );
+        book.setDescription(bookDto.getDescription());
+        Book updatedBook=this.bookRepo.save(book);
+        BookDto updatedDto=this.bookToDto(updatedBook);
+        return this.modelMapper.map(updatedDto,BookDto.class );
     }
-
-    @Override
+        @Override
     public void deleteBook(Long id) {
         Book book=this.bookRepo.findById(id)
                 .orElseThrow(()->new ResourceNotFoundException("Book","book",id));

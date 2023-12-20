@@ -9,7 +9,7 @@ public interface UserService {
 
     List<UserDto> getAllUsers();
 
-    UserDto createUser(UserDto userDto);
+    String createUser(UserDto userDto);
 
     UserDto getUserById(Long userId);
 
