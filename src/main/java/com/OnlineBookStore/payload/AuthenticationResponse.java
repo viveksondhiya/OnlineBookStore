@@ -12,5 +12,9 @@ import lombok.Setter;
 public class AuthenticationResponse {
     private boolean isAuthenticated;
     private String message;
-
+    private Long userId;
+    public AuthenticationResponse(boolean isAuthenticated, String message) {
+        this.isAuthenticated = isAuthenticated;
+        this.message = message;
+    }
 }

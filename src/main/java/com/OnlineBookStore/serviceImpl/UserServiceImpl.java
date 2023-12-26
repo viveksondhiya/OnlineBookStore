@@ -27,16 +27,30 @@ public class UserServiceImpl implements UserService {
 //        return this.userToDto(saveUser);
 //    }
 
-    @Override
-    public String createUser(UserDto userDto) {
-        if (emailExists(userDto.getEmail())) {
-            return "User with this email already exists";
-        }
-
-        User user = dtoToUser(userDto);
-        User savedUser = userRepo.save(user);
-        return "User Created Successfully";
+//    @Override
+//    public String createUser(UserDto userDto) {
+//        if (emailExists(userDto.getEmail())) {
+//            return "User with this email already exists";
+//        }
+//
+//        User user = dtoToUser(userDto);
+//        User savedUser = userRepo.save(user);
+//        return "User Created Successfully";
+//    }
+@Override
+public String createUser(UserDto userDto) {
+    if (emailExists(userDto.getEmail())) {
+        return "User with this email already exists";
     }
+
+    User user = dtoToUser(userDto);
+    User savedUser = userRepo.save(user);
+
+    // Assuming your User entity has a method getId() to retrieve the user ID
+    Long userId = savedUser.getId();
+
+    return String.format("User created successfully with ID: %d", userId);
+}
     private boolean emailExists(String email) {
         return userRepo.existsByEmail(email);
     }
