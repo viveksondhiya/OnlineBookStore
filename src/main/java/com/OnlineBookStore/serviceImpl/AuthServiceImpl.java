@@ -31,6 +31,7 @@ import com.OnlineBookStore.payload.AuthenticationResponse;
 import com.OnlineBookStore.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -55,5 +56,10 @@ public class AuthServiceImpl implements AuthService {
         long uid=userRepo.findByEmail(email).getId();
         return uid;  // Replace with your actual logic
     }
+
+
+
+
+    //password change
 }
 
