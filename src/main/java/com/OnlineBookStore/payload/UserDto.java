@@ -21,9 +21,9 @@ public class UserDto {
     private String name;
     @NotEmpty
     @Email(message = "Email address is not valid")
-    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "Invalid email format")
+   // @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "Invalid email format")
     private String email;
     @NotEmpty
-    @Size(min=8,max=20 ,message = "Password must be min of 8 c characters and max 20 characters")
+    @Size(min=8,max=20 ,message = "Password must be min of 8 characters and max 20 characters")
     private String password;
 }
