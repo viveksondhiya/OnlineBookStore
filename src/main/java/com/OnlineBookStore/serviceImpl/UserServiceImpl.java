@@ -61,10 +61,13 @@ public String createUser(UserDto userDto) {
                 .orElseThrow(()-> new ResourceNotFoundException("User","Id",userId));
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
+       // user.setPassword(userDto.getPassword());
         User updatedUser=this.userRepo.save(user);
         UserDto userDtoNew=this.userToDto(updatedUser);
-        return userDtoNew;
+        UserDto ruserDto=new UserDto();
+        ruserDto.setEmail(userDtoNew.getEmail());
+        ruserDto.setName(userDtoNew.getName());
+        return ruserDto;
     }
 
     @Override

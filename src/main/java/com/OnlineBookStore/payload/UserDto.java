@@ -26,4 +26,9 @@ public class UserDto {
     @NotEmpty
     @Size(min=8,max=20 ,message = "Password must be min of 8 characters and max 20 characters")
     private String password;
+
+    public UserDto(String email,String name){
+        this.email=email;
+        this.name=name;
+    }
 }
